@@ -3,12 +3,10 @@ def solution(s, n):
     
     for c in s:
         if c.isalpha():
-            if c.islower() and ord(c) + n > ord('z'):
-                answer += chr(ord(c) - 26 + n)
-            elif c.isupper() and ord(c) + n > ord('Z'):
-                answer += chr(ord(c) - 26 + n)
-            else:
-                answer += chr(ord(c) + n)
+            if c.islower():
+                answer += chr((ord(c) - ord('a') + n) % 26 + ord('a'))
+            elif c.isupper():
+                answer += chr((ord(c) - ord('A') + n) % 26 + ord('A'))
         else:
             answer += c
     return answer
